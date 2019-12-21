@@ -7,6 +7,6 @@ async function randomWord () {
     let random_word_url = host + '/words/randomWord?api_key=' + api_key;
     const response = await fetch(random_word_url);
     const json1 = await response.json();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    console.log(json1.word);
+    return json1.word;
 }
 randomWord();
