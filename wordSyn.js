@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const API_KEY = '61333f5e04ff167d8eafea290b3ab52e296d8d9df9d64f0f4e37895607658a2990f19f42469b61b9e3bbc16bcf84ee86b11ba7251b007fc1124e28272aa40ddf269201daa753deb68e7090060e67dd74';
 const HOST = 'https://fourtytwowords.herokuapp.com';
 
-async function wordSyn(curWord) {
+module.exports =  async (curWord) => {
 
     
     let wordSynUrl = HOST + `/word/${curWord}/relatedWords?api_key=` + API_KEY;
@@ -20,15 +20,16 @@ async function wordSyn(curWord) {
 
         
         arrayWords = result[index].words;
-        arrayWords.forEach((def) => {
-          console.log('\n' + def);
-        });
+        return {
+            contains : 1,
+            arrayWords : arrayWords
+        };
     } else {
         index = 1; 
         arrayWords = result[index].words;
-        arrayWords.forEach((def) => {
-            console.log('\n' + def);
-        });
+        return {
+            contains : 1,//contain intimates that the arrayWords contains consistent data that corresponds to a given word
+            arrayWords : arrayWords
+        };
     }
 }
-console.log(wordSyn(process.argv.splice(2)));
