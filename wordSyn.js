@@ -13,12 +13,11 @@ module.exports =  async (curWord) => {
     let index = 0;
     
     
-   if( (result[0].relationshipType === 'synonym')){ 
+   if( (result[0].relationshipType === 'synonym')) { 
 
         //result index is 0 because synonym can be in 0 or 1 index
         //it checks in 0 index first if not it will be in index 1
 
-        
         arrayWords = result[index].words;
         return {
             contains : 1,

@@ -9,7 +9,7 @@ module.exports = async (curWord) => {
     
     let arrayWords = result[0].words;
     
-   if( result[0].relationshipType === 'antonym' ){
+   if ( result[0].relationshipType === 'antonym' ) {
        //Antonym always exists at 0 index 
        // if deos'nt exist at 0 then there is no antonym for the given word
         
