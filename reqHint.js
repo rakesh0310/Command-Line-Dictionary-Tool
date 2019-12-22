@@ -1,6 +1,6 @@
 const wordFullDict = require('./wordFullDict');
 
-async function reqHint(curWord) {
+module.exports = async (curWord) => {
     let result = await wordFullDict(curWord);
     let label = ['synonym','antonym','definition'];
     let index = Math.floor(Math.random()*3);
@@ -32,11 +32,9 @@ async function reqHint(curWord) {
             });
         }
     }
-    
-   
-    console.log(label);
-    console.log(returningArray[arrayIndex]);
-    
+    return {
+        label : label[index],
+        returning : returningArray[arrayIndex]
+    };
     
 }
-reqHint(process.argv.splice(2));
