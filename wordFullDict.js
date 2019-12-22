@@ -3,7 +3,7 @@ const wordDefinition = require('./wordDef');
 const wordExamples = require('./wordEx');
 const wordSynonym = require('./wordSyn');
 
-async function wordFullDict(curWord) {
+module.exports = async (curWord) => {
 
     let promises = [wordSynonym(curWord), wordAntonym(curWord), wordDefinition(curWord), wordExamples(curWord)];
     let result =await Promise.all(promises)
@@ -14,7 +14,6 @@ async function wordFullDict(curWord) {
     
     for(let i = 0; i < result.length; i++){
         
-
         if (result[i].contains) {
             resultArray = result[i].arrayWords;
             console.log(`${label[i]} \n`);
@@ -34,4 +33,3 @@ async function wordFullDict(curWord) {
 
 
 }
-wordFullDict(process.argv.splice(2));
