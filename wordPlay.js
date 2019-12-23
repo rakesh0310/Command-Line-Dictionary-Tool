@@ -1,4 +1,4 @@
-const randomWord = require('./randoWord');
+const randomWord = require('./randomWord');
 const reqHint = require('./reqHint');
 const readline = require('readline-sync');
 const reqHintCount = require('./reqHintCount');
@@ -13,7 +13,6 @@ module.exports = async () => {
     hitWords.push(word);
     // if the word is taken then puts into the hitsWords
     
-    console.log('Please Wait...');
 
     let curWordHitHints = [];// it keeps track of current word hitted hints
     let totalCurHints = await reqHintCount(word);
@@ -65,6 +64,31 @@ module.exports = async () => {
                         
                     } else {
                         console.log('Incorrect');
+                        if (curWordHitHints.length === totalCurHints) {
+                            word = await randomWord(); 
+                            if (hitWords.length === 42) {
+                                // if we are acquired 42 words then we are done.
+                                console.log('Running out of words');
+                                choice = 0;
+                                break;
+                            }       
+
+                            while (hitWords.includes(word)) {// Checks the hitWords to avoid duplicate words.
+                                word = await randomWord();
+                            }
+
+                            hitWords.push(word);
+
+                            curWordHitHints = [];
+                            totalCurHints = reqHintCount(word);
+                            curWordHint = await reqHint(word);
+                            while (curWordHitHints.includes(curWordHint.returning)) {// iterates utill we get new hint 
+                                curWordHint = await reqHint(word);
+                            }
+
+                            curWordHitHints.push(curWordHint.returning);
+
+                        }
                         curScore -= 2;
                         console.log(`you score is ${curScore}`);
                         console.log('1.I wanna try again\n2.Give me a hint\n3.I want to skip\n0.End the game');  
@@ -77,7 +101,9 @@ module.exports = async () => {
                 break;
             case 2:
                     if (curWordHitHints.length === totalCurHints) {
-                        //jumble word
+                        let shuffled = word.split('').sort(() => {return 0.5 - Math.random()}).join('');
+                        console.log(`Hint:  Jumble : ${shuffled} \n`);
+
                     } else {
                         curWordHint = await reqHint(word);
                         while (curWordHitHints.includes(curWordHint.returning)) {

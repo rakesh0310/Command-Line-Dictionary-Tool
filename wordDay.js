@@ -1,5 +1,5 @@
 const wordFullDict = require('./wordFullDict');
-async function wordDay (curWord) {
+module.exports = async (curWord) => {
     let result = [];
     let label = ['synonyms :-', 'antonyms :-', 'defnitions :-', 'examples :-'];
     result = await wordFullDict(curWord);
@@ -21,4 +21,3 @@ async function wordDay (curWord) {
         }
     }
 }
-wordDay(process.argv.splice(2));

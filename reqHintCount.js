@@ -10,5 +10,5 @@ module.exports = async (curWord) => {
             resultArray += result[i].arrayWords.length ;
         }
     }
-    console.log(resultArray);
+    
 }
