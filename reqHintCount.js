@@ -1,6 +1,6 @@
 const wordFullDict = require('./wordFullDict');
 
-async function reqHintCount (curWord) {
+module.exports = async (curWord) => {
     let result = [];
     result = await wordFullDict(curWord);
     let resultArray = 0;
@@ -12,4 +12,3 @@ async function reqHintCount (curWord) {
     }
     console.log(resultArray);
 }
-reqHintCount(process.argv.splice(2));
