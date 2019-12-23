@@ -20,7 +20,7 @@ module.exports = async (curWord) => {
     } else {
         
         return {
-            contains : 0,//here contains intimates that the arrayWords contains genuine data for a given word 1 represents genuine
+            contains : 0,//here contains intimates that the arrayWords contains genuine data for a given word .1 represents genuine
             arrayWords : arrayWords
         };
     }
