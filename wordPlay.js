@@ -14,6 +14,7 @@ module.exports = async () => {
     // if the word is taken then puts into the hitsWords
     
 
+
     let curWordHitHints = [];// it keeps track of current word hitted hints
     let totalCurHints = await reqHintCount(word);
     // totalCurHints acquires the number of hints are existing for given word
