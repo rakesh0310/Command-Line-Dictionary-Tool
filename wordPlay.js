@@ -2,7 +2,7 @@ const randomWord = require('./randomWord');
 const readline = require('readline-sync');
 const returnHints = require('./returnHints');
 
-async function  test () {
+module.exports = async () => {
     let curScore = 0;// curScore keeps count of score 
     let hitWords = []; 
     // hitWords keep track of words that already been hit
@@ -124,4 +124,3 @@ async function  test () {
         if (choice === 0) break;
     }
 } 
-wordPlay();
