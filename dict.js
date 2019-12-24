@@ -14,12 +14,13 @@ async function dict() {
     let wordRes;
     let result;
     let key;
-    console.log('please wait...');
+    
     if(array.length){
         key = array[0];
         
         switch (key) {
             case 'def': {
+                    console.log('please wait...');
                     wordRes = await wordDef(array[1].toLowerCase());
         
                     result = wordRes.arrayWords;
@@ -31,8 +32,9 @@ async function dict() {
                 break;
             }
             case 'syn': {
+                console.log('please wait...');
                 wordRes = await wordSyn(array[1].toLowerCase());
-                wordRes.toLowerCase();
+                
                 result = wordRes.arrayWords;
 
                 console.log('\n Synonyms:- \n');
@@ -43,6 +45,7 @@ async function dict() {
                 break;
             }
             case 'ant': {
+                console.log('please wait...');
                 wordRes = await wordAnt(array[1].toLowerCase());
                 if(wordRes.contains){
                     result = wordRes.arrayWords;
@@ -53,11 +56,12 @@ async function dict() {
                         console.log( '> ' + def + '\n' );
                     });
                 } else {
-                    console.log('\n->>> This word Does\'nt contain Antonyms\n');
+                    console.log('\n->>> This word does\'nt contain Antonyms\n');
                 }
                 break;
             }
             case 'ex': {
+                console.log('please wait...');
                 wordRes = await wordEx(array[1].toLowerCase());
                 result = wordRes.arrayWords;
                 
