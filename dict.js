@@ -20,7 +20,8 @@ async function dict() {
         
         switch (key) {
             case 'def': {
-                    wordRes = await wordDef(array[1]);
+                    wordRes = await wordDef(array[1].toLowerCase());
+        
                     result = wordRes.arrayWords;
 
                     console.log('\n Defnitions:- \n');
@@ -30,7 +31,8 @@ async function dict() {
                 break;
             }
             case 'syn': {
-                wordRes = await wordSyn(array[1]);
+                wordRes = await wordSyn(array[1].toLowerCase());
+                wordRes.toLowerCase();
                 result = wordRes.arrayWords;
 
                 console.log('\n Synonyms:- \n');
@@ -41,7 +43,7 @@ async function dict() {
                 break;
             }
             case 'ant': {
-                wordRes = await wordAnt(array[1]);
+                wordRes = await wordAnt(array[1].toLowerCase());
                 if(wordRes.contains){
                     result = wordRes.arrayWords;
 
@@ -56,7 +58,7 @@ async function dict() {
                 break;
             }
             case 'ex': {
-                wordRes = await wordEx(array[1]);
+                wordRes = await wordEx(array[1].toLowerCase());
                 result = wordRes.arrayWords;
                 
                 console.log('\n Examples:- \n');
